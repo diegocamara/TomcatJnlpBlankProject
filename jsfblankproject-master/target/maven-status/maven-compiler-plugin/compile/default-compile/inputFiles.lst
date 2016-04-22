@@ -1,0 +1,12 @@
+/home/diego/Downloads/jsfblankproject-master/src/main/java/template/blank/manager/IExemploManager.java
+/home/diego/Downloads/jsfblankproject-master/src/main/java/template/blank/dao/ExemploDAO.java
+/home/diego/Downloads/jsfblankproject-master/src/main/java/template/blank/mb/ExemploMB.java
+/home/diego/Downloads/jsfblankproject-master/src/main/java/template/blank/manager/ExemploManager.java
+/home/diego/Downloads/jsfblankproject-master/src/main/java/template/blank/util/ConstantesMensagens.java
+/home/diego/Downloads/jsfblankproject-master/src/main/java/template/blank/mb/AbstractMB.java
+/home/diego/Downloads/jsfblankproject-master/src/main/java/template/blank/domain/ExemploEntity.java
+/home/diego/Downloads/jsfblankproject-master/src/main/java/template/blank/dao/AbstractDAO.java
+/home/diego/Downloads/jsfblankproject-master/src/main/java/template/blank/util/IniciarBanco.java
+/home/diego/Downloads/jsfblankproject-master/src/main/java/template/blank/util/MensagensUtil.java
+/home/diego/Downloads/jsfblankproject-master/src/main/java/template/blank/manager/AbstractManager.java
+/home/diego/Downloads/jsfblankproject-master/src/main/java/template/blank/util/HibernateTest.java
