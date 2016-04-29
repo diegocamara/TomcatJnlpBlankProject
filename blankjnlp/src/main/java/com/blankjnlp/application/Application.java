@@ -1,4 +1,5 @@
-package com.blankjnlp.view;
+package com.blankjnlp.application;
+
 
 import java.awt.BorderLayout;
 import java.awt.Container;
@@ -14,11 +15,21 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class TestJNLP {
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.context.ConfigurableApplicationContext;
+
+@SpringBootApplication
+@EnableAutoConfiguration
+public class Application {
 
 	static BasicService basicService;
 
 	public static void main(String[] args) {
+
+		ConfigurableApplicationContext context = new SpringApplicationBuilder(Application.class).headless(false).web(false)
+				.run(args);
 
 		JFrame jFrame = new JFrame("JNLP");
 
