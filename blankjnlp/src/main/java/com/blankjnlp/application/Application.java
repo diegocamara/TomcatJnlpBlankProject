@@ -28,7 +28,9 @@ public class Application {
 		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 
 		UserView user = (UserView) context.getBean("userView");
-
+		
+		user.getUserManager().findAll();
+		
 		JFrame jFrame = new JFrame("JNLP");
 
 		jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
