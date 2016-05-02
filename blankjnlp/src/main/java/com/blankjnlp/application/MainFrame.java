@@ -14,26 +14,17 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+public class MainFrame extends JFrame {
 
-import com.blankjnlp.application.view.UserView;
-
-public class Application {
+	private static final long serialVersionUID = 1L;
 
 	static BasicService basicService;
 
-	public static void main(String[] args) {
+	public void init() {
 
-		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		UserView user = (UserView) context.getBean("userView");
-
-		JFrame jFrame = new JFrame("JNLP");
-
-		jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-		Container content = jFrame.getContentPane();
+		Container content = this.getContentPane();
 
 		content.add(new JLabel("JLabel"), BorderLayout.CENTER);
 
@@ -59,8 +50,8 @@ public class Application {
 			System.err.println("Lookup failed: " + e);
 		}
 
-		jFrame.pack();
-		jFrame.setVisible(true);
+		this.pack();
+		this.setVisible(true);
 
 	}
 
