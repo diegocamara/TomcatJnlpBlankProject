@@ -6,12 +6,12 @@ import java.util.Map;
 
 public class AbstractReport {
 
-	private String path;
+	private String fileName;
 	private Map<String, Object> parameters;
 	private List<? extends Serializable> dataSource;
 
-	public AbstractReport(String path, Map<String, Object> parameters, List<? extends Serializable> dataSource) {
-		setPath(path);
+	public AbstractReport(String fileName, Map<String, Object> parameters, List<? extends Serializable> dataSource) {
+		setFileName(fileName);
 		setParameters(parameters);
 		setDataSource(dataSource);
 	}
@@ -20,12 +20,12 @@ public class AbstractReport {
 
 	}
 
-	public String getPath() {
-		return path;
+	public String getFileName() {
+		return fileName;
 	}
 
-	public void setPath(String path) {
-		this.path = path;
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
 	}
 
 	public Map<String, Object> getParameters() {

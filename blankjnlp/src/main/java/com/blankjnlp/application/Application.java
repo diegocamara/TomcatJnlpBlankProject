@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -17,6 +18,8 @@ import javax.swing.JLabel;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.blankjnlp.application.reports.AbstractReport;
+import com.blankjnlp.application.reports.ReportsUtil;
 import com.blankjnlp.application.view.UserView;
 
 public class Application {
@@ -45,6 +48,11 @@ public class Application {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
+				AbstractReport report = new AbstractReport();				
+				report.setFileName("reportTest.jrxml");
+				ReportsUtil.generateReport(report);
+				
 				try {
 					URL url = new URL(e.getActionCommand());
 				} catch (MalformedURLException ex) {
