@@ -18,6 +18,7 @@ import javax.swing.JLabel;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.blankjnlp.application.dto.ReportTestDTO;
 import com.blankjnlp.application.reports.AbstractReport;
 import com.blankjnlp.application.reports.ReportsUtil;
 import com.blankjnlp.application.view.UserView;
@@ -49,8 +50,9 @@ public class Application {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				AbstractReport report = new AbstractReport();				
+				ReportTestDTO report = new ReportTestDTO();				
 				report.setFileName("reportTest.jrxml");
+				
 				ReportsUtil.generateReport(report);
 				
 				try {

@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
-public class AbstractReport {
+public abstract class AbstractReport {
 
 	private String fileName;
 	private Map<String, Object> parameters;
