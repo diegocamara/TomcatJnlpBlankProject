@@ -1,79 +1,25 @@
 package com.blankjnlp.application;
 
-import java.awt.BorderLayout;
-import java.awt.Container;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
-import java.net.MalformedURLException;
-import java.net.URL;
-
-import javax.jnlp.BasicService;
-import javax.jnlp.ServiceManager;
-import javax.jnlp.UnavailableServiceException;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.blankjnlp.application.dto.ReportTestDTO;
-import com.blankjnlp.application.reports.AbstractReport;
-import com.blankjnlp.application.reports.ReportsUtil;
-import com.blankjnlp.application.view.UserView;
+import com.blankjnlp.application.configconstants.ConstantsConfigurations;
+import com.blankjnlp.application.utils.SpringUtils;
+import com.blankjnlp.application.view.MainView;
 
 public class Application {
 
-	static BasicService basicService;
+    public static void main(String[] args) {
 
-	public static void main(String[] args) {
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext(
+                ConstantsConfigurations.APPLICATION_CONTEXT_FILE);
 
-		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        MainView mainView = SpringUtils.getBean("mainView", applicationContext);
+        mainView.setApplicationContext(applicationContext);
+        mainView.setSize(800, 600);
+        mainView.setLocationRelativeTo(null);
+        mainView.setVisible(true);
 
-		UserView user = (UserView) context.getBean("userView");
-		
-		user.getUserManager().findAll();
-		
-		JFrame jFrame = new JFrame("JNLP");
-
-		jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-		Container content = jFrame.getContentPane();
-
-		content.add(new JLabel("JLabel"), BorderLayout.CENTER);
-
-		JButton jButton = new JButton("JButton");
-
-		jButton.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-				ReportTestDTO report = new ReportTestDTO();				
-				report.setFileName("reportTest.jrxml");
-				
-				ReportsUtil.generateReport(report);
-				
-				try {
-					URL url = new URL(e.getActionCommand());
-				} catch (MalformedURLException ex) {
-
-				}
-			}
-		});
-
-		content.add(jButton, BorderLayout.SOUTH);
-
-		try {
-			basicService = (BasicService) ServiceManager.lookup("javax.jnlp.BasicService");
-		} catch (UnavailableServiceException e) {
-			System.err.println("Lookup failed: " + e);
-		}
-
-		jFrame.pack();
-		jFrame.setVisible(true);
-
-	}
+    }
 
 }

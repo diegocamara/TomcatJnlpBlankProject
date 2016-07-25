@@ -13,28 +13,29 @@ import net.sf.jasperreports.view.JasperViewer;
 
 public class ReportsUtil {
 
-	private static final String SRC_MAIN_RESOURCES_REPORTS = "/src/main/resources/reports/";
+    private static final String SRC_MAIN_RESOURCES_REPORTS = "/src/main/resources/reports/";
 
-	public static void generateReport(AbstractReport abstractReport) {
+    public static void generateReport(AbstractReport abstractReport) {
 
-		try {
+        try {
 
-			String absoluteFilePath = new File(StringUtils.EMPTY).getAbsolutePath() + SRC_MAIN_RESOURCES_REPORTS
-					+ abstractReport.getFileName();
+            String absoluteFilePath = new File(StringUtils.EMPTY).getAbsolutePath()
+                    + SRC_MAIN_RESOURCES_REPORTS + abstractReport.getFileName();
 
-			JasperReport jasperReport = JasperCompileManager.compileReport(absoluteFilePath);
+            JasperReport jasperReport = JasperCompileManager.compileReport(absoluteFilePath);
 
-			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, abstractReport.getParameters(),
-					new JRBeanCollectionDataSource(abstractReport.getDataSource()));
+            JasperPrint jasperPrint =
+                    JasperFillManager.fillReport(jasperReport, abstractReport.getParameters(),
+                            new JRBeanCollectionDataSource(abstractReport.getDataSource()));
 
-			JasperViewer.viewReport(jasperPrint, true);
+            JasperViewer.viewReport(jasperPrint, false);
 
-		} catch (Exception ex) {
+        } catch (Exception ex) {
 
-			ex.printStackTrace();
+            ex.printStackTrace();
 
-		}
+        }
 
-	}
+    }
 
 }
