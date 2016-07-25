@@ -11,14 +11,14 @@ public class Application {
 
     public static void main(String[] args) {
 
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext(
-                ConstantsConfigurations.APPLICATION_CONTEXT_FILE);
+	ApplicationContext applicationContext = new ClassPathXmlApplicationContext(
+		ConstantsConfigurations.APPLICATION_CONTEXT_FILE);
 
-        MainView mainView = SpringUtils.getBean("mainView", applicationContext);
-        mainView.setApplicationContext(applicationContext);
-        mainView.setSize(800, 600);
-        mainView.setLocationRelativeTo(null);
-        mainView.setVisible(true);
+	MainView mainView = SpringUtils.getBean("mainView", applicationContext);
+	mainView.setApplicationContext(applicationContext);
+	mainView.setSize(800, 600);
+	mainView.setLocationRelativeTo(null);
+	mainView.setVisible(true);
 
     }
 
