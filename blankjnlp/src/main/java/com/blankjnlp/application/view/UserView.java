@@ -6,7 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,39 +26,37 @@ public class UserView extends AbstractView {
     @Override
     public void init() {
 
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	Container content = this.getContentPane();
 
-        Container content = this.getContentPane();
+	content.add(new JLabel("JLabel"), BorderLayout.CENTER);
 
-        content.add(new JLabel("JLabel"), BorderLayout.CENTER);
+	JButton jButton = new JButton("JButton");
 
-        JButton jButton = new JButton("JButton");
+	jButton.addActionListener(new ActionListener() {
 
-        jButton.addActionListener(new ActionListener() {
+	    @Override
+	    public void actionPerformed(ActionEvent e) {
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
+		ReportTestDTO report = new ReportTestDTO();
+		report.setFileName("reportTest.jrxml");
 
-                ReportTestDTO report = new ReportTestDTO();
-                report.setFileName("reportTest.jrxml");
+		ReportsUtil.generateReport(report);
 
-                ReportsUtil.generateReport(report);
+	    }
+	});
 
-            }
-        });
+	content.add(jButton, BorderLayout.SOUTH);
 
-        content.add(jButton, BorderLayout.SOUTH);
-
-        this.pack();
+	this.pack();
 
     }
 
     public IUserManager getUserManager() {
-        return userManager;
+	return userManager;
     }
 
     public void setUserManager(IUserManager userManager) {
-        this.userManager = userManager;
+	this.userManager = userManager;
     }
 
 }

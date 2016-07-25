@@ -2,36 +2,42 @@ package com.blankjnlp.application.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "User")
-public class User {
+@IdClass(UserKey.class)
+public class User extends PersistentObject<UserKey> {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
+    @Id
+    private Integer id;
 
-	@Column(name = "NAME")
-	private String name;
+    @Column(name = "NAME")
+    private String name;
 
-	public Integer getId() {
-		return id;
-	}
+    @Override
+    public UserKey getKey() {
+	UserKey userKey = new UserKey();
+	userKey.setId(getId());
+	return userKey;
+    }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public Integer getId() {
+	return id;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public void setId(Integer id) {
+	this.id = id;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getName() {
+	return name;
+    }
+
+    public void setName(String name) {
+	this.name = name;
+    }
 
 }

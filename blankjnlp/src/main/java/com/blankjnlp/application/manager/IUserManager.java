@@ -6,6 +6,6 @@ import com.blankjnlp.application.domain.User;
 
 public interface IUserManager {
 
-	List<User> findAll();
-	
+    List<User> findAll();
+
 }
