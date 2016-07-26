@@ -11,55 +11,55 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class AbstractDAO<E> {
 
-	private @Autowired SessionFactory sessionFactory;
+    private @Autowired SessionFactory sessionFactory;
 
-	private Class<E> persistentClass;
+    private Class<E> persistentClass;
 
-	@PostConstruct
-	private void sessionCreate() {
-		persistentClass = (Class<E>) ((ParameterizedType) getClass().getGenericSuperclass())
-				.getActualTypeArguments()[0];
-	}
+    @PostConstruct
+    private void sessionCreate() {
+        persistentClass = (Class<E>) ((ParameterizedType) getClass().getGenericSuperclass())
+                .getActualTypeArguments()[0];
+    }
 
-	public Criteria createCriteria() {
+    public Criteria createCriteria() {
 
-		Criteria criteria = getCurrentSession().createCriteria(getEntityClass());
+        Criteria criteria = getCurrentSession().createCriteria(getEntityClass());
 
-		return criteria;
-	}
+        return criteria;
+    }
 
-	public void save(Object... entityObject) {
-		for (Object object : entityObject) {
-			getCurrentSession().save(object);
-		}
-		getCurrentSession().flush();
-	}
+    public void save(Object... entityObject) {
+        for (Object object : entityObject) {
+            getCurrentSession().save(object);
+        }
+        getCurrentSession().flush();
+    }
 
-	public void update(Object... entityObject) {
-		for (Object object : entityObject) {
-			getCurrentSession().update(object);
-		}
-	}
+    public void update(Object... entityObject) {
+        for (Object object : entityObject) {
+            getCurrentSession().update(object);
+        }
+    }
 
-	public void delete(Object... entityObject) {
-		for (Object object : entityObject) {
-			getCurrentSession().delete(object);
-		}
-	}
+    public void delete(Object... entityObject) {
+        for (Object object : entityObject) {
+            getCurrentSession().delete(object);
+        }
+    }
 
-	public void evict(Object... entityObject) {
-		for (Object object : entityObject) {
-			getCurrentSession().evict(object);
-		}
-	}
+    public void evict(Object... entityObject) {
+        for (Object object : entityObject) {
+            getCurrentSession().evict(object);
+        }
+    }
 
-	protected Class<E> getEntityClass() {
-		return persistentClass;
-	}
+    protected Class<E> getEntityClass() {
+        return persistentClass;
+    }
 
-	protected Session getCurrentSession() {
-		return sessionFactory.getCurrentSession();
+    protected Session getCurrentSession() {
+        return sessionFactory.getCurrentSession();
 
-	}
+    }
 
 }

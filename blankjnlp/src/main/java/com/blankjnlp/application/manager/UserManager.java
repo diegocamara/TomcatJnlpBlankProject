@@ -12,18 +12,24 @@ import com.blankjnlp.application.domain.User;
 @Service
 public class UserManager extends AbstractManager<UserDAO> implements IUserManager {
 
-	@Autowired
-	private UserDAO userDAO;
+    @Autowired
+    private UserDAO userDAO;
 
-	@Override
-	@Transactional
-	public List<User> findAll() {
-		return userDAO.findAll();
-	}
+    @Override
+    @Transactional
+    public List<User> findAll() {
+        return this.userDAO.findAll();
+    }
 
-	@Override
-	public UserDAO getDao() {		
-		return this.userDAO;
-	}
+    @Override
+    @Transactional(noRollbackFor = Exception.class)
+    public void save(User user) {
+        this.userDAO.save(user);
+    }
+
+    @Override
+    public UserDAO getDao() {
+        return this.userDAO;
+    }
 
 }

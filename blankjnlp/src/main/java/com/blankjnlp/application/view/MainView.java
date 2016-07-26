@@ -15,6 +15,8 @@ import javax.swing.JLabel;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
+import com.blankjnlp.application.domain.User;
+import com.blankjnlp.application.manager.IUserManager;
 import com.blankjnlp.application.utils.SpringUtils;
 
 @Component
@@ -29,54 +31,63 @@ public class MainView extends JFrame {
 
     public MainView() {
 
-	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-	Container content = this.getContentPane();
+        Container content = this.getContentPane();
 
-	content.add(new JLabel("JLabel"), BorderLayout.CENTER);
+        content.add(new JLabel("JLabel"), BorderLayout.CENTER);
 
-	JButton jButton = new JButton("JButton");
+        JButton jButton = new JButton("JButton");
 
-	jButton.addActionListener(new ActionListener() {
+        jButton.addActionListener(new ActionListener() {
 
-	    @Override
-	    public void actionPerformed(ActionEvent e) {
+            @Override
+            public void actionPerformed(ActionEvent e) {
 
-		UserView userView = SpringUtils.getBean("userView", getApplicationContext());
+                UserView userView = SpringUtils.getBean("userView", getApplicationContext());
 
-		setActiveView(userView);
-		getActiveView().setVisible(true);
-		getActiveView().setLocationRelativeTo(null);
+                setActiveView(userView);
+                getActiveView().setVisible(true);
+                getActiveView().setLocationRelativeTo(null);
 
-	    }
-	});
+                IUserManager userManager =
+                        SpringUtils.getBean("userManager", getApplicationContext());
 
-	content.add(jButton, BorderLayout.SOUTH);
+                User user = new User();
+                //                user.setCode(1L);
+                user.setName("Testing");
 
-	try {
-	    basicService = (BasicService) ServiceManager.lookup("javax.jnlp.BasicService");
-	} catch (UnavailableServiceException e) {
-	    System.err.println("Lookup failed: " + e);
-	}
+                userManager.save(user);
 
-	this.pack();
+            }
+        });
+
+        content.add(jButton, BorderLayout.SOUTH);
+
+        try {
+            basicService = (BasicService) ServiceManager.lookup("javax.jnlp.BasicService");
+        } catch (UnavailableServiceException e) {
+            System.err.println("Lookup failed: " + e);
+        }
+
+        this.pack();
 
     }
 
     public AbstractView getActiveView() {
-	return activeView;
+        return activeView;
     }
 
     public void setActiveView(AbstractView activeView) {
-	this.activeView = activeView;
+        this.activeView = activeView;
     }
 
     public ApplicationContext getApplicationContext() {
-	return applicationContext;
+        return applicationContext;
     }
 
     public void setApplicationContext(ApplicationContext applicationContext) {
-	this.applicationContext = applicationContext;
+        this.applicationContext = applicationContext;
     }
 
 }

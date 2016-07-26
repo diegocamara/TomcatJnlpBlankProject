@@ -5,7 +5,7 @@
 	<artifactId>blankjnlp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>BlankJnlp</name>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -88,23 +88,35 @@
 			<artifactId>hibernate-validator</artifactId>
 			<version>5.1.0.Final</version>
 		</dependency>
-		
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-envers -->
+		<dependency>
+		    <groupId>org.hibernate</groupId>
+		    <artifactId>hibernate-envers</artifactId>
+		    <version>4.3.4.Final</version>
+		</dependency>		
 		<dependency>
 			<groupId>org.hsqldb</groupId>
 			<artifactId>hsqldb</artifactId>
 			<version>2.3.2</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 			<version>3.3.2</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<version>1.4.191</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/joda-time/joda-time -->
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>2.9.4</version>
 		</dependency>
 
 		<dependency>
@@ -114,32 +126,32 @@
 			<scope>system</scope>
 			<systemPath>/home/diego/jdk1.7.0_79/jre/lib/javaws.jar</systemPath>
 		</dependency>
-		
+
 		<!-- JasperReport -->
 		<dependency>
 			<groupId>org.apache.poi</groupId>
-		    <artifactId>poi</artifactId>
-		    <version>3.10-FINAL</version>
-		 </dependency>
-		
-		<dependency>
-	        <groupId>net.sourceforge.barbecue</groupId>
-	        <artifactId>barbecue</artifactId>
-	        <version>1.5-beta1</version>
-  		</dependency>
-		
-		<dependency>
-	       <groupId>net.sf.jasperreports</groupId>
-	       <artifactId>jasperreports</artifactId>
-	       <version>5.0.1</version>
-	  	</dependency>
-		
-		<dependency>
-		   <groupId>net.sf.jasperreports</groupId>
-		   <artifactId>jasperreports-fonts</artifactId>
-		   <version>4.0.0</version>
+			<artifactId>poi</artifactId>
+			<version>3.10-FINAL</version>
 		</dependency>
-				
+
+		<dependency>
+			<groupId>net.sourceforge.barbecue</groupId>
+			<artifactId>barbecue</artifactId>
+			<version>1.5-beta1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>net.sf.jasperreports</groupId>
+			<artifactId>jasperreports</artifactId>
+			<version>5.0.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>net.sf.jasperreports</groupId>
+			<artifactId>jasperreports-fonts</artifactId>
+			<version>4.0.0</version>
+		</dependency>
+
 	</dependencies>
 
 	<properties>
@@ -151,48 +163,48 @@
 	<build>
 		<plugins>
 			<plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>	
-                <configuration>
-			        <mainClass>com.blankjnlp.application.Application</mainClass>			       
-			    </configuration>            
-            </plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<mainClass>com.blankjnlp.application.Application</mainClass>
+				</configuration>
+			</plugin>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.3</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>                                       
-                </configuration>
-            </plugin>
-           
-           <plugin>
-		    <groupId>org.dstovall</groupId>
-		    <artifactId>onejar-maven-plugin</artifactId>
-		    <version>1.4.4</version>
-		    <executions>
-		        <execution>
-		            <configuration>
-		            	<mainClass>com.blankjnlp.application.Application</mainClass>
-                        <attachToBuild>true</attachToBuild>
-		                <onejarversion>0.97</onejarversion>
-		                <classifier>onejar</classifier>
-		            </configuration>
-		            <goals>
-		                <goal>one-jar</goal>
-		            </goals>
-		        </execution>
-		   </executions>
-		</plugin>
-                                  
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.3</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.dstovall</groupId>
+				<artifactId>onejar-maven-plugin</artifactId>
+				<version>1.4.4</version>
+				<executions>
+					<execution>
+						<configuration>
+							<mainClass>com.blankjnlp.application.Application</mainClass>
+							<attachToBuild>true</attachToBuild>
+							<onejarversion>0.97</onejarversion>
+							<classifier>onejar</classifier>
+						</configuration>
+						<goals>
+							<goal>one-jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
 		</plugins>
 	</build>
-<pluginRepositories>
-    <pluginRepository>
-        <id>onejar-maven-plugin.googlecode.com</id>
-        <url>http://onejar-maven-plugin.googlecode.com/svn/mavenrepo</url>
-    </pluginRepository>
-</pluginRepositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>onejar-maven-plugin.googlecode.com</id>
+			<url>http://onejar-maven-plugin.googlecode.com/svn/mavenrepo</url>
+		</pluginRepository>
+	</pluginRepositories>
 </project>

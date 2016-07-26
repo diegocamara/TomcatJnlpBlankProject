@@ -12,14 +12,14 @@ public class UserKey implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private int code;
 
-    public Integer getId() {
-	return id;
+    public int getCode() {
+        return code;
     }
 
-    public void setId(Integer id) {
-	this.id = id;
+    public void setCode(int code) {
+        this.code = code;
     }
 
 }

@@ -8,4 +8,6 @@ public interface IUserManager {
 
     List<User> findAll();
 
+    void save(User user);
+
 }
